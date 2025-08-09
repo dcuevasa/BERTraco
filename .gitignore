@@ -94,4 +94,4 @@ cython_debug/
 
 .venv/
 
-.translate_models/
+translate_models/
