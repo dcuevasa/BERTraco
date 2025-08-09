@@ -27,7 +27,7 @@ class MiniFace(tk.Tk):
         self.TONGUE_COORDS = (85, 135, 115, 170)
 
         # Parámetros de Animación
-        self.ANIMATION_INTERVAL_MS = 50
+        self.ANIMATION_INTERVAL_MS = 100
         self.IDLE_DELAY_MIN_S = 1.5
         self.IDLE_DELAY_MAX_S = 5.0
         self.SLEEP_TIMEOUT_S = 10.0 # Tiempo de inactividad para dormir
@@ -211,6 +211,10 @@ class MiniFace(tk.Tk):
         chosen_animation()
 
     def reset_eyes(self):
+        # Solo resetea los ojos si la cara no está durmiendo.
+        if self.sleeping:
+            return
+
         self.canvas.coords(self.eye1, *self.EYE1_COORDS)
         self.canvas.coords(self.eye2, *self.EYE2_COORDS)
         self.canvas.coords(self.pupil1, *self.PUPIL1_COORDS)
