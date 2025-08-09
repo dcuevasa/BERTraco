@@ -27,7 +27,7 @@ class MiniFace(tk.Tk):
         self.TONGUE_COORDS = (85, 135, 115, 170)
 
         # Parámetros de Animación
-        self.ANIMATION_INTERVAL_MS = 200
+        self.ANIMATION_INTERVAL_MS = 50
         self.IDLE_DELAY_MIN_S = 1.5
         self.IDLE_DELAY_MAX_S = 5.0
         self.SLEEP_TIMEOUT_S = 5.0 # Tiempo de inactividad para dormir

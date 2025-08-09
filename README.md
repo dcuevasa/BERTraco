@@ -16,70 +16,100 @@ Su principal característica es una interfaz gráfica con una cara animada que r
 
 ## Requisitos
 
-Este proyecto fue desarrollado y probado en **Lubuntu 20.04** con **Python 3.8.10**, pero debería ser compatible con la mayoría de las distribuciones de Linux modernas.
+A continuación se detallan los pasos para instalar y ejecutar BERTraco tanto en Windows como en Linux.
 
-### 1. Ollama
+### Windows
 
-Necesitas tener Ollama instalado para ejecutar el modelo de lenguaje local. Ollama es una herramienta que facilita la ejecución de LLMs de código abierto.
+**1. Instalar Ollama**
 
-*   **Instalación en Linux:** Abre una terminal y ejecuta el siguiente comando:
-    ```bash
-    curl -fsSL https://ollama.com/install.sh | sh
-    ```
-*   **Página oficial:** Para más información o instrucciones para otros sistemas operativos, visita [ollama.com](https://ollama.com/).
+Necesitas tener Ollama instalado para ejecutar el modelo de lenguaje local.
+*   Ve a la página oficial de Ollama: [ollama.com](https://ollama.com/).
+*   Descarga el instalador para Windows y sigue las instrucciones.
 
-### 2. Modelo de Lenguaje (LLM)
+**2. Descargar el Modelo de Lenguaje (LLM)**
 
-El proyecto está configurado para usar `qwen:0.5b`, un modelo pequeño y eficiente. Una vez instalado Ollama, descarga el modelo con este comando en tu terminal:
-
+El proyecto está configurado para usar `qwen:0.5b`, un modelo pequeño y eficiente. Una vez instalado Ollama, abre el Símbolo del sistema (Command Prompt) o PowerShell y ejecuta:
 ```bash
 ollama pull qwen:0.5b
 ```
-*Nota: Puedes experimentar con otros modelos pequeños cambiando el nombre del modelo en la línea `llm = Ollama(model="qwen:0.5b")` del archivo `BERTraco.py`.*
+*Nota: Puedes experimentar con otros modelos pequeños cambiando el nombre del modelo en la línea `llm = Ollama(model="qwen:0.5b")` del archivo [`BERTraco.py`](d:\David\Trabajos\Entregas\Proyectos\BERTraco\BERTraco.py).*
 
-### 3. Dependencias de Python
+**3. Instalar Python**
 
-El proyecto requiere varias librerías de Python, las cuales están listadas en el archivo `requirements.txt`.
+Si no tienes Python, descárgalo desde [python.org](https://www.python.org/). Se recomienda la versión 3.8 o superior. Asegúrate de marcar la casilla "Add Python to PATH" durante la instalación. `Tkinter` generalmente viene incluido.
 
-La librería `tkinter` también es necesaria, pero generalmente viene incluida con las instalaciones de Python en Linux. Si encuentras un error relacionado con `tkinter`, puedes instalarla en sistemas basados en Debian/Ubuntu con el siguiente comando:
+**4. Configurar el Proyecto**
 
+*   **Clona el Repositorio:** Abre una terminal (cmd o PowerShell) y ejecuta:
+    ```bash
+    git clone https://github.com/tu-usuario/BERTraco.git
+    cd BERTraco
+    ```
+    *(Reemplaza la URL por la del repositorio real).*
+
+*   **Crea un Entorno Virtual (Recomendado):**
+    ```bash
+    python -m venv venv
+    .\venv\Scripts\activate
+    ```
+
+*   **Instala las Dependencias:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+**5. Ejecutar la Aplicación**
+
+Asegúrate de que el servicio de Ollama se esté ejecutando en segundo plano. Luego, en la misma terminal con el entorno virtual activado, inicia la aplicación:
+```bash
+python BERTraco.py
+```
+
+### Linux
+
+**1. Instalar Ollama**
+
+*   **Instalación:** Abre una terminal y ejecuta el siguiente comando:
+    ```bash
+    curl -fsSL https://ollama.com/install.sh | sh
+    ```
+*   **Página oficial:** Para más información, visita [ollama.com](https://ollama.com/).
+
+**2. Descargar el Modelo de Lenguaje (LLM)**
+
+Una vez instalado Ollama, descarga el modelo con este comando en tu terminal:
+```bash
+ollama pull qwen:0.5b
+```
+*Nota: Puedes experimentar con otros modelos pequeños cambiando el nombre del modelo en la línea `llm = Ollama(model="qwen:0.5b")` del archivo [`BERTraco.py`](d:\David\Trabajos\Entregas\Proyectos\BERTraco\BERTraco.py).*
+
+**3. Dependencias del Sistema**
+
+El proyecto requiere `tkinter`. Si no está instalado, puedes instalarlo en sistemas basados en Debian/Ubuntu con:
 ```bash
 sudo apt-get update
 sudo apt-get install python3-tk
 ```
 
-## Guía de Instalación
+**4. Configurar el Proyecto**
 
-Sigue estos pasos para poner en marcha a BERTraco:
+*   **Clona el Repositorio:**
+    ```bash
+    git clone https://github.com/tu-usuario/BERTraco.git
+    cd BERTraco
+    ```
+    *(Reemplaza la URL por la del repositorio real).*
 
-**1. Clona el Repositorio**
+*   **Crea un Entorno Virtual (Recomendado):**
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-Abre tu terminal, navega al directorio donde quieras guardar el proyecto y clónalo.
-
-```bash
-git clone https://github.com/tu-usuario/BERTraco.git
-cd BERTraco
-```
-*(Reemplaza `https://github.com/tu-usuario/BERTraco.git` con la URL real del repositorio).*
-
-**2. Crea un Entorno Virtual (Recomendado)**
-
-Es una buena práctica aislar las dependencias del proyecto.
-
-```bash
-# Asegúrate de estar usando la versión correcta de python
-python3.8 -m venv venv
-source venv/bin/activate
-```
-*Ahora verás `(venv)` al principio de tu línea de comandos.*
-
-**3. Instala las Dependencias**
-
-Instala todas las librerías de Python necesarias usando el archivo `requirements.txt`.
-
-```bash
-pip install -r requirements.txt
-```
+*   **Instala las Dependencias de Python:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 **4. Ejecuta la Aplicación**
 
