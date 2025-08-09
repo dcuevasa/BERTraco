@@ -30,7 +30,7 @@ class MiniFace(tk.Tk):
         self.ANIMATION_INTERVAL_MS = 50
         self.IDLE_DELAY_MIN_S = 1.5
         self.IDLE_DELAY_MAX_S = 5.0
-        self.SLEEP_TIMEOUT_S = 5.0 # Tiempo de inactividad para dormir
+        self.SLEEP_TIMEOUT_S = 10.0 # Tiempo de inactividad para dormir
         # --- Fin de Constantes ---
 
         self.title("Asistente Simple")
@@ -196,9 +196,9 @@ class MiniFace(tk.Tk):
             self.animate_sleep()
         elif time.time() - self.last_activity_time > self.SLEEP_TIMEOUT_S:
             self.start_sleeping()
-        elif time.time() - self.last_activity_time > self.idle_delay:
+        # Modificación clave: Añadir 'and not self.sleeping' a la condición.
+        elif time.time() - self.last_activity_time > self.idle_delay and not self.sleeping:
             self.run_random_idle_animation()
-            self.last_activity_time = time.time()
             self.idle_delay = random.uniform(self.IDLE_DELAY_MIN_S, self.IDLE_DELAY_MAX_S)
 
         self.after(self.ANIMATION_INTERVAL_MS, self.animation_loop)
