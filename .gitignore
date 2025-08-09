@@ -93,3 +93,5 @@ dmypy.json
 cython_debug/
 
 .venv/
+
+.translate_models/

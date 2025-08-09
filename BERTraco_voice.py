@@ -1,6 +1,6 @@
 import threading
 import queue
-import os
+import time
 # Cambiamos la importación de pydub.playback
 import simpleaudio as sa
 from langchain_community.llms import Ollama
@@ -138,6 +138,12 @@ def chat_loop(face, message_queue, audio_queue):
                     if animalese_samples:
                         audio_queue.put(buffer_palabra)
                     buffer_palabra = ""
+                
+                # --- LÍMITE DE VELOCIDAD ---
+                # Añadimos una pequeña pausa para dar tiempo a que el audio se reproduzca.
+                # Esto limita la velocidad máxima de aparición del texto.
+                time.sleep(0.3) # Pausa de 30ms por cada fragmento del LLM
+                
 
             # Detener cualquier audio en reproducción antes de vaciar la cola
             sa.stop_all()
